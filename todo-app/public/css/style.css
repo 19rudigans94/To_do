@@ -1,0 +1,223 @@
+:root {
+  --primary-color: #1976d2;
+  /* основной цвет (синий) */
+  --secondary-color: #f50057;
+  /* вторичный цвет (розовый) */
+  --error-color: #f44336;
+  /* цвет ошибки */
+  --success-color: #4caf50;
+  /* цвет успеха */
+  --warning-color: #ff9800;
+  /* цвет предупреждения */
+  --info-color: #2196f3;
+  /* цвет информации */
+  --text-primary-color: #212121;
+  /* основной текстовый цвет */
+  --text-secondary-color: #757575;
+  /* вторичный текстовый цвет */
+  --background-color: #f5f5f5;
+  /* цвет фона */
+  --surface-color: #ffffff;
+  /* цвет поверхности */
+  --divider-color: #bdbdbd;
+  /* цвет разделителя */
+}
+
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  background-color: var(--background-color);
+  color: var(--text-primary-color);
+}
+
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 2rem;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1), 0 2px 4px rgba(0, 0, 0, 0.1);
+  border-radius: 4px;
+  background-color: var(--surface-color);
+}
+
+/* Стили для списка задач */
+li {
+  list-style-type: none;
+  border: 1px solid var(--primary-color);
+  border-radius: 4px;
+  padding: 10px;
+  margin-bottom: 1rem;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1), 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+li:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2), 0 3px 6px rgba(0, 0, 0, 0.2);
+}
+
+/* Заголовок */
+h1 {
+  text-align: center;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+}
+
+/* Форма добавления задачи */
+#task-form {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 1rem;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+#task-form input[type="text"] {
+  width: 100%;
+  padding: 0.5rem;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+#task-form button[type="submit"] {
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+  background-color: var(--primary-color);
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+/* Список задач */
+#task-list {
+  list-style-type: none;
+  padding: 0;
+}
+
+/* Действия для каждой задачи */
+.task-actions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* Кнопка "Удалить" */
+.task-delete {
+  background-color: var(--error-color);
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.task-delete:hover {
+  background-color: #c82333;
+}
+
+/* Селектор статуса задачи */
+.task-status {
+  width: 20%;
+  padding: 0.5rem;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  cursor: pointer;
+  background-color: #f5f5f5;
+}
+
+/* Карточка задачи */
+.task {
+  background-color: var(--surface-color);
+  border: 1px solid var(--divider-color);
+  border-radius: 4px;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+}
+
+/* Заголовок задачи */
+.task h4 {
+  margin: 0;
+  margin-right: 1rem;
+}
+
+/* Текст задачи */
+.task span {
+  flex-grow: 1;
+  word-break: break-all;
+}
+
+/* Стили для кнопок в карточке задачи */
+.task select,
+.task button {
+  margin-top: 0.5rem;
+  padding: 0.5rem;
+  font-size: 1rem;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.task select {
+  width: 100%;
+}
+
+.task button {
+  width: 100%;
+  background-color: var(--error-color);
+  color: #fff;
+}
+
+.task button:hover {
+  background-color: #c82333;
+}
+
+/* Перечеркнутый текст */
+.line-through {
+  text-decoration: line-through;
+}
+
+/* Адаптивность для мобильных устройств */
+@media screen and (max-width: 600px) {
+  #task-form {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Уведомление о удалении */
+.notification {
+  position: fixed;
+  top: 10px;
+  right: 10px;
+  background-color: #333;
+  color: #fff;
+  padding: 10px;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.notification.show {
+  opacity: 1;
+}
+
+.task:hover {
+  transform: translateY(-2px);
+  /* Сдвигаем задачу вверх на 2px */
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2), 0 3px 6px rgba(0, 0, 0, 0.2);
+  /* Добавляем более глубокую и мягкую тень */
+  border-color: var(--secondary-color);
+  /* Изменяем цвет границы */
+}
+
+.task:hover .task-delete {
+  background-color: var(--secondary-color);
+  /* Изменяем цвет кнопки "Удалить" */
+}
